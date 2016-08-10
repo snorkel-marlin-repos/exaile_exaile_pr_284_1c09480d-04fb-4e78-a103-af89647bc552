@@ -1,0 +1,66 @@
+
+Windows Notes
+=============
+
+We're excited to announce that Exaile has official support for Windows 
+platforms as of version 3.3.0, and is distributed in an official installer
+program. 
+
+Exaile (and its installer) has been tested on:
+
+* Windows 7 x64 SP1
+* Windows 8.1
+* Windows 10
+    
+* Python 2.7.10 (32-bit and 64-bit)
+* PyGObject 3.14 + GTK+ 3.14
+* GStreamer 1.4.5
+
+Exaile now requires GStreamer 1.x and GTK3. The best way to install these
+requirements on Windows is using the "All-In-One PyGI/PyGObject for Windows
+Installer", at http://sourceforge.net/projects/pygobjectwin32/
+
+When using the all-in-one installer, you must select the following options:
+
+* GTK 3.x
+* GStreamer 1.4.5
+* The gst-plugins options you desire (recommend installing them all)
+
+Running Exaile
+--------------
+
+If you installed exaile using the Windows installer, you can find icons to
+launch Exaile in the Start Menu under "All Programs" -> "Exaile".
+
+Alternatively, you can directly launch "exaile_win.py".
+
+
+Exaile DirectSound plugin (libgstexailedirectsoundsink.dll)
+-----------------------------------------------------------
+
+Exaile currently includes a custom DirectSound GST plugin that is compiled
+against gst-plugins-good 1.4.5 using mingw32/64.
+
+The reason a custom plugin is included with Exaile is because GST mainline
+does not currently support selecting the audio output for the DirectSound
+plugin. Another project created a patch to add this functionality, and
+you can find the bug at https://bugzilla.gnome.org/show_bug.cgi?id=584980
+
+The plugin is LGPL, and our modifications to the GST source are in
+tools\win-installer\directsound.patch
+
+If you do not wish to use the Exaile directsound plugin, you can change
+the audiosink in Preferences->Playback
+
+Bug Reporting
+-------------
+
+If exaile crashes, you should be able to find a logfile from the last time
+exaile was launched in the following directories::
+    
+    Windows XP: %USERPROFILE%\Local Settings\Application Data\exaile\logs
+    Windows 7+:  %USERPROFILE%\AppData\Local\exaile\logs
+
+If you run into any bugs not mentioned in this document, please report them
+to us via github at https://github.com/exaile/exaile/issues . Please include any
+relevant logfile snippets. 
